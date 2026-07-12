@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import { useState } from "react";
 import artistData from "/data/artistData.json";
 import { bind } from "cuelume";
@@ -7,11 +8,14 @@ bind();
 export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
   
  return (
    <>
+     
      <main className=" bg-primary/20 text-white rounded-t-2xl p-6 [&_button]:cursor-pointer">
-       
+       <animatePresence>
        {/* NOW PLAYING */}
         <section className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs">
@@ -24,8 +28,8 @@ export default function Navbar() {
                 ))}
             </div>
             <div className="flex items-center gap-4">
-              {/* SHARE */}
-              <button data-cuelume-chime data-cuelume-release="toggle">
+              {/* HORIZONTAL DOTS */}
+              <button data-cuelume-press="tick" data-cuelume-release="toggle">
                 <svg width="13" height="13" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.7285 13.7894C13.3143 13.7894 13.7892 13.3145 13.7892 12.7287C13.7892 12.1429 13.3143 11.668 12.7285 11.668C12.1427 11.668 11.6677 12.1429 11.6677 12.7287C11.6677 13.3145 12.1427 13.7894 12.7285 13.7894Z" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M20.1535 13.7894C20.7394 13.7894 21.2143 13.3145 21.2143 12.7287C21.2143 12.1429 20.7394 11.668 20.1535 11.668C19.5677 11.668 19.0928 12.1429 19.0928 12.7287C19.0928 13.3145 19.5677 13.7894 20.1535 13.7894Z" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>
@@ -33,7 +37,7 @@ export default function Navbar() {
                 </svg>
               </button>
               {/* EXPAND */}
-              <button data-cuelume-chime data-cuelume-release="toggle" onClick={() => setIsOpen(!isOpen)}>
+              <button data-cuelume-press="tick" data-cuelume-release="release" onClick={() => setIsOpen(!isOpen)}>
                 <svg width="13" height="13" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.8501 10.6067L22.2752 3.18164M22.2752 9.54599V3.18164H15.9108M10.6072 14.8496L3.18213 22.2747M3.18213 15.9103L3.18213 22.2747H9.54648" stroke="#F5FBEE" stroke-width="1.06072" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -46,8 +50,8 @@ export default function Navbar() {
      
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
-        <section className="flex items-center gap-6 ">
-          <div className="w-[40%] h-60">
+        <motion.section className="flex items-center gap-6 " initial={{ scale: 0 }} animate={{ scale: 1 }}>
+          <div  className="w-[40%] h-60" initial={{ scale: 0 }} animate={{ scale: 1 }}>
               {/* ARTIST INFO */}
               {artistData.map((item, index) => (
                 <div key={index} className="text-pretty">
@@ -76,7 +80,7 @@ export default function Navbar() {
                     <p className="uppercase font-bold">{item.project}</p>
                     <div>
                         {/* BOOKMARK BUTTON */}
-                        <button className="group" data-cuelume-toggle='sparkle'>
+                        <button className="group" data-cuelume-toggle='chime'>
                           <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path className="transition duration-500 group-hover:stroke-accent group-hover:fill-accent" d="M5.30371 8.27312C5.30371 6.49093 5.30371 5.59984 5.65055 4.91914C5.95563 4.32037 6.44244 3.83356 7.04121 3.52848C7.72191 3.18164 8.61301 3.18164 10.3952 3.18164H15.0624C16.8446 3.18164 17.7357 3.18164 18.4164 3.52848C19.0151 3.83356 19.5019 4.32037 19.807 4.91914C20.1539 5.59984 20.1539 6.49093 20.1539 8.27312V22.2747L12.7288 18.0318L5.30371 22.2747V8.27312Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
@@ -106,15 +110,16 @@ export default function Navbar() {
                 <div className="grid grid-cols-2 place-items-baseline">
                 {item.titles.map((track, trackIndex) => (
                     <div key={trackIndex} className="text-xs pb-2">
-                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-1`} data-cuelume-hover="bloom">{track}</button>
+                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-1 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom">{track}</button>
                     </div>
                 ))}
                 </div>
               </div>
             ))}
           </section>
-        </section>
-        )}
+        </motion.section>
+         )}
+       </animatePresence>
      </main>
    </>
  );
