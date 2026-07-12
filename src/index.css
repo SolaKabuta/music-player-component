@@ -2,4 +2,12 @@
 @import "tailwindcss";
 
 
-
+@theme {
+    /*COLORS*/
+    --color-primary: #333232;
+    --color-secondary: #F5FBEE;
+    --color-accent: #ff6f61;
+    
+    /*FONTS*/
+    --font-primary: 'Roboto', sans-serif;
+}
