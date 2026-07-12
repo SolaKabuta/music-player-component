@@ -1,5 +1,8 @@
 import { useState } from "react";
 import artistData from "/data/artistData.json";
+import { bind } from "cuelume";
+
+bind();
 
 export default function Navbar() {
 
@@ -7,14 +10,16 @@ export default function Navbar() {
   
  return (
    <>
-     <main className="  bg-primary/20 text-white rounded-2xl p-6 [&_button]:cursor-pointer">
+     <main className=" bg-primary/20 text-white rounded-t-2xl p-6 [&_button]:cursor-pointer">
+       
+       {/* NOW PLAYING */}
         <section className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs">
                 <div className="bg-lime-400 h-1.5 w-1.5 rounded-full animate-ping"></div>
-                <p>Now playing :</p>
+                <p>Now playing <span className="px-2">:</span></p>
                 {artistData.map((item, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <p>{item.artist}</p>
+                    <p>{item.titles[4]}</p>
                   </div>
                 ))}
             </div>
@@ -26,20 +31,22 @@ export default function Navbar() {
                 <path d="M5.3034 13.7894C5.88922 13.7894 6.36413 13.3145 6.36413 12.7287C6.36413 12.1429 5.88922 11.668 5.3034 11.668C4.71758 11.668 4.24268 12.1429 4.24268 12.7287C4.24268 13.3145 4.71758 13.7894 5.3034 13.7894Z" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
-              <button onClick={() => setIsOpen(!isOpen)}>
+              {/* EXPAND */}
+              <button data-cuelume-chime data-cuelume-release onClick={() => setIsOpen(!isOpen)}>
                 <svg width="13" height="13" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.8501 10.6067L22.2752 3.18164M22.2752 9.54599V3.18164H15.9108M10.6072 14.8496L3.18213 22.2747M3.18213 15.9103L3.18213 22.2747H9.54648" stroke="#F5FBEE" stroke-width="1.06072" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
         </section>
+        
         {/* DIVIDER*/}
-        <div className="bg-white/30 h-[0.8px] w-full rounded-full my-4"></div> 
+        <div className="bg-white/20 h-0.5 w-full rounded-full my-3"></div> 
      
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
         <section className="flex items-center gap-6 ">
-          <div className="w-[40%] h-50">
+          <div className="w-[40%] h-60">
               {/* ARTIST INFO */}
               {artistData.map((item, index) => (
                 <div key={index} className="text-pretty">
@@ -55,36 +62,56 @@ export default function Navbar() {
                 </div>
               ))}
           </div> 
+          
           {/* DIVIDER */}
-          <div className="bg-white opacity-40 h-50 w-0.5 rounded-full"></div>
-          {/* TRACKS IDs */}
-          <div className=" h-50">
+          <div className="bg-white/20 h-50 w-0.5 rounded-full"></div>
+          
+          {/* TRACKS DATA */}
+          <section className=" h-60">
             {artistData.map((item, index) => (
               <div key={index} className="text-pretty">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-2">
-                    <p className="uppercase font-bold pb-2">{item.project}</p>
+                <div className="flex justify-between gap-16">
+                  <div className="flex items-center gap-2 pb-2">
+                    <p className="uppercase font-bold">{item.project}</p>
+                    <div>
+                      {/* BOOKMARK BUTTON */}
                     <button>
-                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5.30371 8.27312C5.30371 6.49093 5.30371 5.59984 5.65055 4.91914C5.95563 4.32037 6.44244 3.83356 7.04121 3.52848C7.72191 3.18164 8.61301 3.18164 10.3952 3.18164H15.0624C16.8446 3.18164 17.7357 3.18164 18.4164 3.52848C19.0151 3.83356 19.5019 4.32037 19.807 4.91914C20.1539 5.59984 20.1539 6.49093 20.1539 8.27312V22.2747L12.7288 18.0318L5.30371 22.2747V8.27312Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </button>
+                    {/* LIKE BUTTON */}
                     <button>
-                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.0896 3.18164C20.8257 3.18164 23.3361 6.73772 23.3361 10.0551C23.3361 16.7735 12.9174 22.2747 12.7288 22.2747C12.5403 22.2747 2.12158 16.7735 2.12158 10.0551C2.12158 6.73772 4.63196 3.18164 8.36807 3.18164C10.5131 3.18164 11.9156 4.26756 12.7288 5.22221C13.5421 4.26756 14.9446 3.18164 17.0896 3.18164Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </button>
+                    </div>
                   </div> 
                   <div>
-                    <button>Follow</button>
+                    {/* FOLLOW BUTTON */}
+                    <a href="https://soundcloud.com/kamorange" target="_blank" className="flex items-center gap-2 uppercase text-xs border-[0.5px] border-secondary rounded-full p-1 px-3 transition duration-300 hover:bg-blue-400 hover:text-blue-700 hover:border-blue-700 active:bg-blue-700 active:text-secondary group">
+                      <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path className="transition duration-500  group-hover:stroke-blue-700 group-active:stroke-secondary" d="M12.7288 16.4407H7.95557C6.47526 16.4407 5.7351 16.4407 5.13283 16.6234C3.7768 17.0347 2.71563 18.0959 2.30428 19.4519C2.12158 20.0542 2.12158 20.7944 2.12158 22.2747M20.1539 22.2747V15.9103M16.9717 19.0925H23.3361M15.3806 7.9549C15.3806 10.5911 13.2436 12.7282 10.6074 12.7282C7.97118 12.7282 5.83412 10.5911 5.83412 7.9549C5.83412 5.3187 7.97118 3.18164 10.6074 3.18164C13.2436 3.18164 15.3806 5.3187 15.3806 7.9549Z" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Follow
+                    </a>
                   </div>
                 </div>
                 <div className="text-xs opacity-60">
                   <p className="uppercase text-xs pb-4">Tracks <span className="px-4">:</span></p>
                 </div>
+                {/* TRACKS LIST */}
+                <div className="grid grid-cols-2 place-items-baseline">
+                {item.titles.map((track, trackIndex) => (
+                    <div key={trackIndex} className="text-xs pb-2">
+                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black`}>{track}</button>
+                    </div>
+                ))}
+                </div>
               </div>
             ))}
-          </div>
+          </section>
         </section>
         )}
      </main>
