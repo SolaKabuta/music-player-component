@@ -2,13 +2,17 @@
   {
     "artist" : "Kam", 
     "project" : "My Side Of The Story", 
-    "bio" : "",
+    "bio" : "Kam is a Brussels-based hobby producer keeping his creative muscles sharp between projects. Blending club, garage and atmospheric influences, he uses spare-time sessions to experiment, tell stories, and stay connected to his artistic side—no pressure, just genuine vibes and steady growth.",
+    "contact" : "solakabuta@gmail.com",
+    "genre" : "UK GARAGE/CLUB",
+    "cover" : "",
+    "profile_picture" : "",
     "titles" : [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "Vertigo",
+      "Regrets",
+      "Twisted Truth",
+      "Bad News (I Kill The President)",
+      "London Calls (Interlude)"
     ]
   }
 ]
