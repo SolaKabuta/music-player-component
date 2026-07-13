@@ -11,3 +11,7 @@
     /*FONTS*/
     --font-primary: 'Roboto', sans-serif;
 }
+
+body {
+    background: url("../assets/images/background.jpg") no-repeat center center fixed;
+}

@@ -4,7 +4,7 @@ import artistData from "/data/artistData.json";
 export default function ArtistCard() {
  return (
    <>
-     <main className="bg-blue-700 min-h-screen grid plaice-items-center justify-center ">
+     <main className="min-h-screen grid plaice-items-center justify-center ">
        <section className="max-w-4xl mx-auto px-4 py-14 sm:px-6 sm:py-20 md:py-28">
          <Navbar />
        {/* ARTIST AND MUSIC DATA */}
