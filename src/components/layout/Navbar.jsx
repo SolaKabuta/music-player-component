@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react"
 import { useState } from "react";
 import artistData from "/data/artistData.json";
@@ -11,7 +12,12 @@ export default function Navbar() {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isFollow, setIsFollowing] = useState(false);
-  const [nowPlaying, setNowPlaying] = useState(false);
+  // const [nowPlaying, setNowPlaying] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState(artistData[0].tracks[0].id);
+  
+  const handleTrackClick = (trackId) => {
+    setCurrentTrack(trackId);
+  };
   
  return (
    <>
@@ -24,7 +30,7 @@ export default function Navbar() {
                 <p>Now playing <span className="px-2">:</span></p>
                 {artistData.map((item, index) => (
                   <div key={index} >
-                    <p>{item.tracks[0].id}</p>
+                    <p>{item.tracks[3].id}</p>
                   </div>
                 ))}
             </div>
@@ -132,11 +138,11 @@ export default function Navbar() {
                 <div className="flex flex-wrap gap-2 w-80">
                 {item.tracks.map((track, trackIndex) => (
                     <div key={trackIndex} className="text-xs">
-                    {track.id === item.tracks[0].id ? (
-                      <button className={`border-2 border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => setNowPlaying(true)}>{track.id}
+                    {track.id === item.tracks[3].id ? (
+                      <button className={`border-2 border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
                     ) : (
-                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => setNowPlaying(false)}>{track.id}
+                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
                     )}
                     </div>
