@@ -7,12 +7,12 @@
     "genre" : "UK GARAGE / CLUB",
     "cover" : "",
     "avatar" : "",
-    "titles" : [
-      "Vertigo",
-      "Regrets",
-      "Twisted Truth",
-      "Bad News (I Kill The President)",
-      "London Calls (Interlude)"
+    "tracks" : [
+      { "id" : "Vertigo"},
+      { "id" : "Regrets"},
+      { "id" : "Twiste Truth"},
+      { "id" : "Bad News (I Kill The President"},
+      { "id" : "London Calls (Interlude)"}
     ]
   }
 ]

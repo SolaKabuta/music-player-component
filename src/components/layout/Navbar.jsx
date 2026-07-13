@@ -15,7 +15,6 @@ export default function Navbar() {
   
  return (
    <>
-     
      <main className=" bg-primary/40 backdrop-blur-2xl text-white rounded-t-2xl p-6 [&_button]:cursor-pointer">
        <animatePresence>
        {/* NOW PLAYING */}
@@ -24,8 +23,8 @@ export default function Navbar() {
                 <div className="bg-lime-400 h-1.5 w-1.5 rounded-full animate-ping"></div>
                 <p>Now playing <span className="px-2">:</span></p>
                 {artistData.map((item, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <p>{item.titles[4]}</p>
+                  <div key={index} >
+                    <p>{item.tracks[0].id}</p>
                   </div>
                 ))}
             </div>
@@ -61,7 +60,7 @@ export default function Navbar() {
                   <div className="text-xs opacity-60">
                     <p className="uppercase text-xs pb-4">About <span className="px-4">:</span></p>
                     <p className="text-xs">{item.bio}</p>
-                    <p className="py-2">Inquiries - booking : </p>
+                    <p className="py-2">Inquiries - booking <span className="px-4">:</span> </p>
                     <a href={`mailto:${item.contact}`} className="text-lime-400 hover:underline">
                       {item.contact}
                     </a>
@@ -84,7 +83,7 @@ export default function Navbar() {
                     <div>
                         {/* BOOKMARK BUTTON */}
                       {isBookmarked ? (
-                        <button className="group" data-cuelume-toggle='chime' onClick={() => setIsBookmarked(false)}>
+                        <button className="group" data-cuelume-toggle='chime' onClick={() => setIsBookmarked(true)}>
                           <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path className="transition duration-500 bg-accent group-hover:stroke-accent group-hover:fill-accent" d="M5.30371 8.27312C5.30371 6.49093 5.30371 5.59984 5.65055 4.91914C5.95563 4.32037 6.44244 3.83356 7.04121 3.52848C7.72191 3.18164 8.61301 3.18164 10.3952 3.18164H15.0624C16.8446 3.18164 17.7357 3.18164 18.4164 3.52848C19.0151 3.83356 19.5019 4.32037 19.807 4.91914C20.1539 5.59984 20.1539 6.49093 20.1539 8.27312V22.2747L12.7288 18.0318L5.30371 22.2747V8.27312Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
@@ -131,13 +130,13 @@ export default function Navbar() {
                 </div>
                 {/* TRACKS LIST */}
                 <div className="flex flex-wrap gap-2 w-80">
-                {item.titles.map((track, trackIndex) => (
+                {item.tracks.map((track, trackIndex) => (
                     <div key={trackIndex} className="text-xs">
-                    {track == item.titles[4] ? (
-                      <button className={`border-2 border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => setNowPlaying(true)}>{track}
+                    {track.id === item.tracks[0].id ? (
+                      <button className={`border-2 border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => setNowPlaying(true)}>{track.id}
                       </button>
                     ) : (
-                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => setNowPlaying(false)}>{track}
+                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => setNowPlaying(false)}>{track.id}
                       </button>
                     )}
                     </div>
