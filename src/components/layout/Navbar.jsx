@@ -30,7 +30,7 @@ export default function Navbar() {
                 <p>Now playing <span className="px-2">:</span></p>
                 {artistData.map((item, index) => (
                   <div key={index} >
-                    <p>{item.tracks[3].id}</p>
+                    <motion.p>{currentTrack}</motion.p>
                   </div>
                 ))}
             </div>
@@ -138,11 +138,11 @@ export default function Navbar() {
                 <div className="flex flex-wrap gap-2 w-80">
                 {item.tracks.map((track, trackIndex) => (
                     <div key={trackIndex} className="text-xs">
-                    {track.id === item.tracks[3].id ? (
-                      <button className={`border-2 border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
+                    {track.id === currentTrack ? (
+                      <button className={`border border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
                     ) : (
-                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5 active:bg-accent active:border-none active:text-secondary`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
+                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id} <span className="px-2">|</span>{track.duration}
                       </button>
                     )}
                     </div>
