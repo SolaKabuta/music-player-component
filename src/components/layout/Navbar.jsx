@@ -86,19 +86,19 @@ export default function Navbar() {
             {artistData.map((item, index) => (
               <div key={index} className="text-pretty">
                 <div className="flex justify-between gap-16">
-                  <div className="flex justify-end items-center gap-2 pb-2">
+                  <div className="flex items-center gap-2 pb-2">
                     <p className="uppercase font-bold">{item.project}</p>
                     {/* CTAs */}
-                    <div>
-                        {/* BOOKMARK BUTTON */}
+                    <div className="pt-2">
+                      {/* BOOKMARK BUTTON */}
                       {isBookmarked ? (
-                        <button className="group" data-cuelume-toggle='chime' onClick={() => setIsBookmarked(true)}>
+                        <button className="group" data-cuelume-toggle='toggle' onClick={() => setIsBookmarked(false)}>
                           <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path className="transition duration-500 bg-accent group-hover:stroke-accent group-hover:fill-accent" d="M5.30371 8.27312C5.30371 6.49093 5.30371 5.59984 5.65055 4.91914C5.95563 4.32037 6.44244 3.83356 7.04121 3.52848C7.72191 3.18164 8.61301 3.18164 10.3952 3.18164H15.0624C16.8446 3.18164 17.7357 3.18164 18.4164 3.52848C19.0151 3.83356 19.5019 4.32037 19.807 4.91914C20.1539 5.59984 20.1539 6.49093 20.1539 8.27312V22.2747L12.7288 18.0318L5.30371 22.2747V8.27312Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path className="transition duration-500 fill-secondary group-hover:stroke-accent group-hover:fill-accent" d="M5.30371 8.27312C5.30371 6.49093 5.30371 5.59984 5.65055 4.91914C5.95563 4.32037 6.44244 3.83356 7.04121 3.52848C7.72191 3.18164 8.61301 3.18164 10.3952 3.18164H15.0624C16.8446 3.18164 17.7357 3.18164 18.4164 3.52848C19.0151 3.83356 19.5019 4.32037 19.807 4.91914C20.1539 5.59984 20.1539 6.49093 20.1539 8.27312V22.2747L12.7288 18.0318L5.30371 22.2747V8.27312Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
                         </button>
                       ) : (
-                        <button className="group" data-cuelume-toggle='chime' onClick={() => setIsBookmarked(false)}>
+                        <button className="group" data-cuelume-toggle='chime' onClick={() => setIsBookmarked(true)}>
                           <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path className="transition duration-500 group-hover:stroke-accent group-hover:fill-accent" d="M5.30371 8.27312C5.30371 6.49093 5.30371 5.59984 5.65055 4.91914C5.95563 4.32037 6.44244 3.83356 7.04121 3.52848C7.72191 3.18164 8.61301 3.18164 10.3952 3.18164H15.0624C16.8446 3.18164 17.7357 3.18164 18.4164 3.52848C19.0151 3.83356 19.5019 4.32037 19.807 4.91914C20.1539 5.59984 20.1539 6.49093 20.1539 8.27312V22.2747L12.7288 18.0318L5.30371 22.2747V8.27312Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
@@ -106,13 +106,13 @@ export default function Navbar() {
                         )}
                         {/* LIKE BUTTON */}
                         {isLiked ? (
-                          <button className="group" data-cuelume-toggle='chime' onClick={() => setIsLiked(false)}>
+                          <button className="group" data-cuelume-toggle='toggle' onClick={() => setIsLiked(false)}>
                             <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path className=" stroke-red-500 fill-red-500" d="M17.0896 3.18164C20.8257 3.18164 23.3361 6.73772 23.3361 10.0551C23.3361 16.7735 12.9174 22.2747 12.7288 22.2747C12.5403 22.2747 2.12158 16.7735 2.12158 10.0551C2.12158 6.73772 4.63196 3.18164 8.36807 3.18164C10.5131 3.18164 11.9156 4.26756 12.7288 5.22221C13.5421 4.26756 14.9446 3.18164 17.0896 3.18164Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                           </button>
                         ) : (
-                          <button className="group" data-cuelume-toggle='chime' onClick={() => setIsLiked(true)}>
+                          <button className="group" data-cuelume-toggle='sparkle' onClick={() => setIsLiked(true)}>
                             <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path className="transition duration-500 group-hover:stroke-red-500 group-hover:fill-red-500" d="M17.0896 3.18164C20.8257 3.18164 23.3361 6.73772 23.3361 10.0551C23.3361 16.7735 12.9174 22.2747 12.7288 22.2747C12.5403 22.2747 2.12158 16.7735 2.12158 10.0551C2.12158 6.73772 4.63196 3.18164 8.36807 3.18164C10.5131 3.18164 11.9156 4.26756 12.7288 5.22221C13.5421 4.26756 14.9446 3.18164 17.0896 3.18164Z" stroke="#F5FBEE" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
