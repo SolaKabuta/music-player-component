@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import { motion } from "motion/react"
+import { motion, AnimatePresence, stagger} from "motion/react"
 import { useState } from "react";
 import artistData from "/data/artistData.json";
 import { bind } from "cuelume";
+import { track } from "motion/react-m";
 
 bind();
 
@@ -21,8 +22,8 @@ export default function Navbar() {
   
  return (
    <>
-     <main className=" bg-primary/40 backdrop-blur-2xl text-white rounded-t-2xl p-6 [&_button]:cursor-pointer">
-       <animatePresence>
+     <main className="w-[848px] bg-primary/40 backdrop-blur-2xl text-white rounded-t-2xl p-6 [&_button]:cursor-pointer">
+       <AnimatePresence>
        {/* NOW PLAYING */}
         <section className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs">
@@ -30,7 +31,9 @@ export default function Navbar() {
                 <p>Now playing <span className="px-2">:</span></p>
                 {artistData.map((item, index) => (
                   <div key={index} >
-                    <motion.p>{currentTrack}</motion.p>
+                            <motion.p key={currentTrack} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y:0}} exit={{ opacity: 0, y: 8 }} transition={{ delay: 0.3, duration: 0.5 }}>
+                      {currentTrack}
+                    </motion.p>
                   </div>
                 ))}
             </div>
@@ -57,29 +60,29 @@ export default function Navbar() {
      
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
-        <motion.section className="flex items-center gap-6" >
-          <motion.div  className="w-[40%] h-60" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.6 }}>
-              {/* ARTIST INFO */}
-              {artistData.map((item, index) => (
-                <div key={index} className="text-pretty">
-                  <p className="uppercase font-bold pb-2">{item.artist}</p>
-                  <div className="text-xs opacity-60">
-                    <p className="uppercase text-xs pb-4">About <span className="px-4">:</span></p>
-                    <p className="text-xs">{item.bio}</p>
-                    <p className="py-2">Inquiries - booking <span className="px-4">:</span> </p>
-                    <a href={`mailto:${item.contact}`} className="text-lime-400 hover:underline">
-                      {item.contact}
-                    </a>
-                  </div>
-                </div>
-              ))}
-          </motion.div> 
+          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: "auto", opacity: 0 }} transition={{ delay: 0.1,duration: 0.5 }} className="flex items-center gap-6" >
+            <motion.div  className="w-[40%] h-60" >
+                {/* ARTIST INFO */}
+                {artistData.map((item, index) => (
+                  <motion.div key={index} className="text-pretty" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: 0.8, duration: 0.6 }}>
+                    <p className="uppercase font-bold pb-2">{item.artist}</p>
+                    <div className="text-xs opacity-60">
+                      <p className="uppercase text-xs pb-4">About <span className="px-4">:</span></p>
+                      <p className="text-xs">{item.bio}</p>
+                      <p className="py-2">Inquiries - booking <span className="px-4">:</span> </p>
+                      <a href={`mailto:${item.contact}`} className="text-lime-400 hover:underline">
+                        {item.contact}
+                      </a>
+                    </div>
+                  </motion.div>
+                ))}
+            </motion.div> 
           
           {/* DIVIDER */}
-          <div className="bg-white/20 h-50 w-0.5 rounded-full"></div>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8 }}  className="bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
           
           {/* TRACKS DATA */}
-          <motion.section className=" h-60" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.8 }}>
+          <motion.section className=" h-60" key={track.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8 }}>
             {artistData.map((item, index) => (
               <div key={index} className="text-pretty">
                 <div className="flex justify-between gap-16">
@@ -137,15 +140,18 @@ export default function Navbar() {
                 {/* TRACKS LIST */}
                 <div className="flex flex-wrap gap-2 w-80">
                 {item.tracks.map((track, trackIndex) => (
-                    <div key={trackIndex} className="text-xs">
+                    <motion.div key={track.id}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: trackIndex * 0.3, duration: 1 }} className="text-xs">
                     {track.id === currentTrack ? (
-                      <button className={`border border-accent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
+                      <button className={`border borderaccent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
                     ) : (
                       <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id} <span className="px-2">|</span>{track.duration}
                       </button>
                     )}
-                    </div>
+                    </motion.div>
                 ))}
                 </div>
               </div>
@@ -153,7 +159,7 @@ export default function Navbar() {
           </motion.section>
         </motion.section>
          )}
-       </animatePresence>
+       </AnimatePresence>
      </main>
    </>
  );
