@@ -57,11 +57,12 @@ export default function Navbar() {
         
         {/* DIVIDER*/}
         <div className="bg-white/20 h-0.5 w-full rounded-full my-3"></div> 
-     
+
+        <AnimatePresence>
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
           <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: "auto", opacity: 0 }} transition={{ delay: 0.1,duration: 0.5 }} className="flex items-center gap-6" >
-            <motion.div  className="w-[40%] h-60" >
+            <div  className="w-[40%] h-60" >
                 {/* ARTIST INFO */}
                 {artistData.map((item, index) => (
                   <motion.div key={index} className="text-pretty" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: 0.8, duration: 0.6 }}>
@@ -76,10 +77,10 @@ export default function Navbar() {
                     </div>
                   </motion.div>
                 ))}
-            </motion.div> 
+            </div> 
           
           {/* DIVIDER */}
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8 }}  className="bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: 1, duration: 0.8 }}  className="bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
           
           {/* TRACKS DATA */}
           <motion.section className=" h-60" key={track.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8 }}>
@@ -159,6 +160,7 @@ export default function Navbar() {
           </motion.section>
         </motion.section>
          )}
+         </AnimatePresence>
        </AnimatePresence>
      </main>
    </>

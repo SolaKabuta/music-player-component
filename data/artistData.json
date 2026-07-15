@@ -13,6 +13,12 @@
       { "id" : "Twisted Truth", "duration" : "2:24"},
       { "id" : "Bad News (I Kill The President)", "duration" : "1:36"},
       { "id" : "London Calls (Interlude)", "duration" : "1:39"}
+    ],
+    "credits" : [
+      {"release": "Released by: KamOrange"},
+      {"release": "Release date: 16 July 2026"},
+      {"release": "P-line: ℗ 2026 KamOrange Musique"},
+      {"release": "P-line: ℗ 2026 KamOrange Musique"}
     ]
   }
 ]
