@@ -22,7 +22,7 @@ export default function Navbar() {
   
  return (
    <>
-     <main className="w-[848px] bg-primary/40 backdrop-blur-2xl text-white rounded-t-2xl p-6 [&_button]:cursor-pointer">
+     <main className="w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
        <AnimatePresence>
        {/* NOW PLAYING */}
         <section className="flex items-center justify-between">
@@ -55,8 +55,12 @@ export default function Navbar() {
             </div>
         </section>
         
-        {/* DIVIDER*/}
-        <div className="bg-white/20 h-0.5 w-full rounded-full my-3"></div> 
+          <AnimatePresence>
+          {/* DIVIDER*/}
+          {isOpen && (
+           <motion.div initial={{ opacity: 0, width: 0 }} animate={{ opacity: 1, width: 880 }} exit={{ opacity: 0 }} transition={{ delay: 0.5, duration: 1.2 }} className="bg-white/20 h-0.5 w-full rounded-full my-3"></motion.div> 
+          )}
+          </AnimatePresence>
 
         <AnimatePresence>
         {/* PROJECT DATA DROPDOWN MENU */}
@@ -66,10 +70,10 @@ export default function Navbar() {
                 {/* ARTIST INFO */}
                 {artistData.map((item, index) => (
                   <motion.div key={index} className="text-pretty" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: 0.8, duration: 0.6 }}>
-                    <p className="uppercase font-bold pb-2">{item.artist}</p>
-                    <div className="text-xs opacity-60">
-                      <p className="uppercase text-xs pb-4">About <span className="px-4">:</span></p>
-                      <p className="text-xs">{item.bio}</p>
+                    <p className="uppercase font-bold text-lg pb-2">{item.artist}</p>
+                    <div className="opacity-60">
+                      <p className="uppercase pb-4">About <span className="px-4">:</span></p>
+                      <p>{item.bio}</p>
                       <p className="py-2">Inquiries - booking <span className="px-4">:</span> </p>
                       <a href={`mailto:${item.contact}`} className="text-lime-400 hover:underline">
                         {item.contact}
@@ -87,8 +91,8 @@ export default function Navbar() {
             {artistData.map((item, index) => (
               <div key={index} className="text-pretty">
                 <div className="flex justify-between gap-16">
-                  <div className="flex items-center gap-2 pb-2">
-                    <p className="uppercase font-bold">{item.project}</p>
+                  <div className="flex items-center gap-6 pb-2">
+                    <p className="uppercase font-bold text-lg">{item.project}</p>
                     {/* CTAs */}
                     <div className="pt-2">
                       {/* BOOKMARK BUTTON */}
@@ -146,10 +150,10 @@ export default function Navbar() {
                           animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: trackIndex * 0.3, duration: 1 }} className="text-xs">
                     {track.id === currentTrack ? (
-                      <button className={`border borderaccent bg-secondary text-primary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
+                      <button className={`border borderaccent bg-secondary text-primary text-sm rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
                     ) : (
-                      <button className={`border border-secondary rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id} <span className="px-2">|</span>{track.duration}
+                      <button className={`border border-secondary text-sm rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id} <span className="px-2">|</span>{track.duration}
                       </button>
                     )}
                     </motion.div>

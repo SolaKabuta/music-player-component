@@ -13,7 +13,7 @@ export function MusicPlayer() {
 
   return (
     <>
-      <main className="flex grid-cols-2 h-14 ">
+      <main className="flex grid-cols-2 h-20 w-3/4 rounded-2xl">
         {/* START/PAUSE BUTTON */}
         <section className=" bg-primary/40 w-1/4 rounded-2xl">
           <svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">

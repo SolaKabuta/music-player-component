@@ -1,6 +1,5 @@
 import Navbar from "./components/layout/Navbar"
 import ArtistCard from "./components/ArtistCard"
-// import MusicPlayer from "./components/MusicPlayer"
 // import { useState } from 'react'
 
 function App() {
