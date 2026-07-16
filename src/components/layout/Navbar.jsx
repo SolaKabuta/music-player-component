@@ -1,5 +1,7 @@
+// Navbar.jsx
+
 // eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence, stagger} from "motion/react"
+import { motion, AnimatePresence, stagger, delay} from "motion/react"
 import { useState } from "react";
 import artistData from "/data/artistData.json";
 import { bind } from "cuelume";
@@ -13,7 +15,6 @@ export default function Navbar() {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isFollow, setIsFollowing] = useState(false);
-  // const [nowPlaying, setNowPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(artistData[0].tracks[0].id);
   
   const handleTrackClick = (trackId) => {
@@ -22,16 +23,16 @@ export default function Navbar() {
   
  return (
    <>
-     <main className="w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
+     <main className="md:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
        <AnimatePresence>
-       {/* NOW PLAYING */}
+         {/* NOW PLAYING */}
         <section className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs">
                 <div className="bg-lime-400 h-1.5 w-1.5 rounded-full animate-ping"></div>
                 <p>Now playing <span className="px-2">:</span></p>
                 {artistData.map((item, index) => (
                   <div key={index} >
-                            <motion.p key={currentTrack} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y:0}} exit={{ opacity: 0, y: 8 }} transition={{ delay: 0.3, duration: 0.5 }}>
+                            <motion.p key={currentTrack} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y:0}} exit={{ opacity: 0, y: -5 }} transition={{ delay: 0.3, duration: 0.5, exit: { duration: 0.1 , delay: 0 } }}>
                       {currentTrack}
                     </motion.p>
                   </div>
@@ -54,27 +55,31 @@ export default function Navbar() {
               </button>
             </div>
         </section>
+       </AnimatePresence>
         
           <AnimatePresence>
           {/* DIVIDER*/}
           {isOpen && (
-           <motion.div initial={{ opacity: 0, width: 0 }} animate={{ opacity: 1, width: 880 }} exit={{ opacity: 0 }} transition={{ delay: 0.5, duration: 1.2 }} className="bg-white/20 h-0.5 w-full rounded-full my-3"></motion.div> 
+           <motion.div initial={{ opacity: 0, scaleX: 0 }}
+             animate={{ opacity: 1, scaleX: 1 }}
+             exit={{ opacity: 0, scaleX: 0 }}
+             transition={{ duration: 0.8, ease: "easeInOut", exit: { duration: 0.1 } }} className="bg-white/20 h-0.5 w-full rounded-full my-3"></motion.div> 
           )}
           </AnimatePresence>
 
         <AnimatePresence>
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
-          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: "auto", opacity: 0 }} transition={{ delay: 0.1,duration: 0.5 }} className="flex items-center gap-6" >
+          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ delay: 0.1,duration: 0.5, exit: {duration: 0.1} }} className="flex items-center gap-6" >
             <div  className="w-[40%] h-60" >
                 {/* ARTIST INFO */}
                 {artistData.map((item, index) => (
-                  <motion.div key={index} className="text-pretty" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: 0.8, duration: 0.6 }}>
+                  <motion.div key={index} className="text-pretty" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: 0.8, duration: 0.6, exit: { duration: 0.1 } }}>
                     <p className="uppercase font-bold text-lg pb-2">{item.artist}</p>
                     <div className="opacity-60">
-                      <p className="uppercase pb-4">About <span className="px-4">:</span></p>
+                      <p className="uppercase text-xs pb-4">About <span className="px-4">:</span></p>
                       <p>{item.bio}</p>
-                      <p className="py-2">Inquiries - booking <span className="px-4">:</span> </p>
+                      <p className="text-xs py-2">Inquiries - booking <span className="px-4">:</span> </p>
                       <a href={`mailto:${item.contact}`} className="text-lime-400 hover:underline">
                         {item.contact}
                       </a>
@@ -84,10 +89,10 @@ export default function Navbar() {
             </div> 
           
           {/* DIVIDER */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: 1, duration: 0.8 }}  className="bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
+          <motion.div initial={{ opacity: 0, scaleY: 0 }} animate={{ opacity: 1, scaleY: 1 }} exit={{ opacity: 0, scaleY: 0 }} transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}  className="bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
           
           {/* TRACKS DATA */}
-          <motion.section className=" h-60" key={track.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8 }}>
+          <motion.section className=" h-60" key={track.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8, exit: { duration: 0.1 , delay: 0 } }}>
             {artistData.map((item, index) => (
               <div key={index} className="text-pretty">
                 <div className="flex justify-between gap-16">
@@ -148,7 +153,8 @@ export default function Navbar() {
                     <motion.div key={track.id}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: trackIndex * 0.3, duration: 1 }} className="text-xs">
+                          exit={{ opacity: 1, x: -10, duration: 0.1, delay: 0 }}
+                    transition={{ delay: trackIndex * 0.3, duration: 0.5 }} className="text-xs">
                     {track.id === currentTrack ? (
                       <button className={`border borderaccent bg-secondary text-primary text-sm rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
@@ -165,7 +171,6 @@ export default function Navbar() {
         </motion.section>
          )}
          </AnimatePresence>
-       </AnimatePresence>
      </main>
    </>
  );

@@ -1,3 +1,6 @@
+// ArtistCard.jsx
+ 
+import { MusicPlayer } from "./MusicPlayer";
 import artistData from "/data/artistData.json";
 
 export default function ArtistCard() {
@@ -33,7 +36,7 @@ export default function ArtistCard() {
                   <div className="bg-primary/20 h-40 w-0.5 rounded-full"></div>
                   
                   {/* CREDITS */}
-                  <div>
+                  <div className="hidden md:block">
                     {item.credits.map((credit, index) => (
                       <div key={index}>
                         <p className="text-primary/40 text-sm">{credit.release}</p>
@@ -42,7 +45,6 @@ export default function ArtistCard() {
                   </div>
                 </section>
                 
-
                 {/* PROJECT COVER */}
                 <section className="rounded-r-2xl w-1/4">
                   <img className="w-full h-50 rounded-r-2xl" src={item.cover} alt="Artist cover's" />

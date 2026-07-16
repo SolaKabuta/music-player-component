@@ -1,18 +1,18 @@
 [
   {
     "artist" : "Kam", 
-    "project" : "My Side Of The Story - EP", 
+    "project" : "My Side Of The Story", 
     "bio" : "Kam is a Brussels-based hobby producer keeping his creative muscles sharp between projects. Blending club, garage and atmospheric influences, he uses spare-time sessions to experiment, tell stories, and stay connected to his artistic side—no pressure, just genuine vibes and steady growth.",
     "contact" : "iamnotkam@gmail.com",
-    "genre" : "UK GARAGE / CLUB",
-    "avatar" : "../assets/images/avatar.png",
-    "cover" : "../assets/images/cover.png",
+    "genre" : "UK GARAGE / BREAKBEAT",
+    "avatar" : "../src/assets/images/avatar.png",
+    "cover" : "../src/assets/images/cover.png",
     "tracks" : [
-      { "id" : "Vertigo", "duration" : "2:44"},
-      { "id" : "Regrets", "duration" : "2:37"},
-      { "id" : "Twisted Truth", "duration" : "2:24"},
-      { "id" : "Bad News (I Kill The President)", "duration" : "1:36"},
-      { "id" : "London Calls (Interlude)", "duration" : "1:39"}
+      { "id" : "Vertigo", "duration" : "2:44", "genre": "BREAKBEAT / EXPERIMENTAL"},
+      { "id" : "Regrets", "duration" : "2:37", "genre": "UK GARAGE / CLUB"},
+      { "id" : "Twisted Truth", "duration" : "2:24", "genre": "UK GARAGE / CLUB"},
+      { "id" : "Bad News (I Kill The President)", "duration" : "1:36", "genre": "BREAKBEAT / EXPERIMENTAL"},
+      { "id" : "London Calls (Interlude)", "duration" : "1:39", "genre": "UK GARAGE / 2 STEP"}
     ],
     "credits" : [
       {"release": "Released by: KamOrange"},
