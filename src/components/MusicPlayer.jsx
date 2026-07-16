@@ -1,5 +1,7 @@
 // MusicPlayer.jsx
-// import { ArtistCard } from "./ArtistCard";
+
+import { motion, AnimatePresence } from "framer-motion";
+import  ArtistCard  from "./ArtistCard";
 
 const tracks = [
   { id: 'vertigo', title: 'Vertigo' },
@@ -9,8 +11,11 @@ const tracks = [
   { id: 'london_calls', title: 'London Calls (Interlude)' },
 ];
 
-export function MusicPlayer() {
-  // const { currentTrackId, isPlaying, playTrack } = ArtistCard();
+export function MusicPlayer({ currentTrack, setCurrentTrack }) {
+  
+  const handleTrackClick = (trackId) => {
+    setCurrentTrack(trackId);
+  };
 
   return (
     <>
@@ -35,19 +40,28 @@ export function MusicPlayer() {
           </button>
 
           {/* CURRENT TRACK LAYOUT */}
-          <div className="bg-primary/20 w-[70%] h-5 rounded-full">
+          <div className="bg-primary/20 w-[70%] h-5 mx-2 rounded-full">
             {/* CURRENT TRACK TIMELINE */}
-           <div className="bg-accent w-[40%] h-full rounded-full"></div> 
+            <AnimatePresence>
+           <motion.div className="bg-accent w-[40%] h-full rounded-full"></motion.div> 
+            </AnimatePresence>
           </div>
 
           {/* SKIP FORWARD BUTTON */}
-          <button>
+          <button onClick={() => handleTrackClick('regrets')}>
               <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.30371 7.77316C5.30371 6.64275 5.30371 6.07754 5.53543 5.78725C5.73696 5.53478 6.04255 5.38791 6.36558 5.38826C6.73702 5.38866 7.17837 5.74174 8.06108 6.4479L14.2544 11.4025C14.8206 11.8556 15.1038 12.0821 15.2063 12.3557C15.2962 12.5956 15.2962 12.86 15.2063 13.0999C15.1038 13.3736 14.8206 13.6001 14.2544 14.0531L8.06108 19.0077C7.17837 19.7139 6.73702 20.067 6.36558 20.0674C6.04255 20.0677 5.73696 19.9208 5.53543 19.6684C5.30371 19.3781 5.30371 18.8129 5.30371 17.6825V7.77316Z" fill="#333232"/>
               <path d="M20.1539 5.30273V20.1529M8.06108 19.0077L14.2544 14.0531C14.8206 13.6001 15.1038 13.3736 15.2063 13.0999C15.2962 12.86 15.2962 12.5956 15.2063 12.3557C15.1038 12.0821 14.8206 11.8556 14.2544 11.4025L8.06108 6.4479C7.17837 5.74174 6.73702 5.38866 6.36558 5.38826C6.04255 5.38791 5.73696 5.53478 5.53543 5.78725C5.30371 6.07754 5.30371 6.64275 5.30371 7.77316V17.6825C5.30371 18.8129 5.30371 19.3781 5.53543 19.6684C5.73696 19.9208 6.04255 20.0677 6.36558 20.0674C6.73702 20.067 7.17837 19.7139 8.06108 19.0077Z" stroke="#333232" stroke-width="1.06072" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
           </button>
-
+          {/* TRACK DURATION */}
+          <div className="flex">
+            {/* CURRENT DURATION */}
+            <p className="text-primary text-md pl-4"> 0:00</p>
+            <span className="px-3">/</span>
+            {/* TOTAL DURATION */}
+            <p>0:00</p> 
+          </div>
         </section>
       </main>
     </>

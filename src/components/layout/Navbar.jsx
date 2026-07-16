@@ -9,16 +9,15 @@ import { track } from "motion/react-m";
 
 bind();
 
-export default function Navbar() {
+export default function Navbar({ currentTrack, onTrackChange }) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isFollow, setIsFollowing] = useState(false);
-  const [currentTrack, setCurrentTrack] = useState(artistData[0].tracks[0].id);
   
   const handleTrackClick = (trackId) => {
-    setCurrentTrack(trackId);
+    onTrackChange(trackId);
   };
   
  return (
