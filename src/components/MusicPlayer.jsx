@@ -51,10 +51,12 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
   }, []);
 
   const togglePlayPause = () => {
-    if (isPlaying) {
-      pause();
-    } else {
-      play();
+    if (audioRef.current) {
+      if (isPlaying) {
+        pause();
+      } else {
+        play();
+      }
     }
   };
 
