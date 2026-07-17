@@ -13,5 +13,5 @@
 }
 
 body {
-    background: url("../src/assets/images/background.jpg") no-repeat center center fixed;
+    background: url("../public/assets/images/background.jpg") no-repeat center center fixed;
 }
