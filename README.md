@@ -1,6 +1,6 @@
 # 🎧 Music Player Component 
 
-An elegant, fully-featured, and highly interactive audio player component built with **React**, **Vite**, **Framer Motion**, and **Tailwind CSS**. 
+An elegant, fully-featured, and highly interactive audio player component built with **React**, **Vite**, **Framer Motion**, and **Tailwind CSS** (But not mobile first, this component is part of an experience I'm building as a side project focused on desktop users). 
 
 Designed as a modern music player interface, this project showcases clean state management, modular component architecture, and responsive micro-interactions engineered specifically for music portfolios.
 
