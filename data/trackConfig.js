@@ -1,6 +1,5 @@
 /**
- * Configuration partagée entre le front (React) et le serveur Bun.
- * Une seule source de vérité pour les morceaux disponibles.
+ * CONFIG SHARED BETWEEN FRONT AND BACK.
  */
 
 export const TRACK_LIST = [
@@ -19,7 +18,7 @@ export const TRACK_LIST = [
   },
 ];
 
-/** Map slug → nom de fichier (uniquement les morceaux servis par le serveur) */
+/** MAP SLUG TO FILE NAME -> ONLY AVAILABLE TRACKS */
 export const TRACKS_BY_SLUG = Object.fromEntries(
   TRACK_LIST.filter((track) => track.fileName).map((track) => [
     track.slug,

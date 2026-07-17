@@ -79,7 +79,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
     audio.currentTime = ratio * duration;
   };
 
-  // Quand le morceau change : recharger la source et relancer la lecture
+  // ON TRACK CHANGE : RELOAD AUDIO AND PLAY
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -95,7 +95,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
     play();
   }, [currentSlug, hasAudio, pause, play]);
 
-  // Synchroniser l'état React avec les événements natifs de <audio>
+  // SYNCHRONIZE AUDIO EVENTS WITH STATE
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
