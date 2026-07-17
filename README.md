@@ -96,3 +96,17 @@ To run this project locally, make sure you have [Node.js](https://nodejs.org/) i
 ---
 
 *This component was crafted with care as an exercise in solidifying state hoisting, animation timings, and component composition in React.*
+
+# Code License
+
+The source code in this repository is licensed under the MIT License.
+See the LICENSE file for full details.
+
+# Audio & Visual Assets
+
+All audio files (in `public/audio/`) and visual assets (in `public/images/`) are
+© Kam / Sola Kabuta.
+
+They are provided for demonstration and portfolio purposes only and may **not**
+be copied, reused, modified, or redistributed without explicit written permission.
+
