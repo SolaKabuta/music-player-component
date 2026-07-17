@@ -22,7 +22,7 @@ export default function Navbar({ currentTrack, onTrackChange }) {
   
  return (
    <>
-     <main className="lg:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm md:rounded-t-2xl p-6 [&_button]:cursor-pointer">
+     <main className="lg:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
        <AnimatePresence>
          {/* NOW PLAYING */}
         <section className="flex items-center gap-8 md:gap-0 md:justify-between">

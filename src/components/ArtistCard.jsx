@@ -14,10 +14,10 @@ export default function ArtistCard() {
                   {/* ARTIST AVATAR */}
                   <img className="rounded-full" src={item.avatar} width={150} height={80} alt="Artist avatar's" loading="eager" fetchpriority="high" />
                   {/* ARTIST INFOS */}
-                  <div>
-                    <p className="text-xs md:text-base uppercase font-bold">{item.project}</p>
+                  <div className="w-fit">
+                    <p className="text-xs md:text-base uppercase font-bold pb-4 md:pb-0">{item.project}</p>
                     <p className="text-xs md:text-base uppercase font-bold pb-4">{item.artist}</p>
-                    <div className="flex items-center gap-2 bg-primary text-secondary text-xs rounded-full px-4 py-2 w-fit">
+                    <div className="hidden md:flex items-center gap-2 bg-primary text-secondary text-xs rounded-full px-4 py-2 w-fit">
                       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M8.59204 22.5094C7.11777 20.4055 6.25049 17.8457 6.25049 15.0819C6.25049 11.5026 9.15043 8.60156 12.7276 8.60156C16.3047 8.60156 19.2046 11.5026 19.2046 15.0819" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M8.59204 22.5094C7.11777 20.4055 6.25049 17.8457 6.25049 15.0819C6.25049 11.5026 9.15043 8.60156 12.7276 8.60156C16.3047 8.60156 19.2046 11.5026 19.2046 15.0819" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>

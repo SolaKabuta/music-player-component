@@ -130,7 +130,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
   return (
     <>
       <main className="flex grid-cols-2 h-15 rounded-2xl">
-        <section className="flex justify-center items-center bg-primary/60 backdrop-blur-2xl w-1/4 md:rounded-l-2xl">
+        <section className="flex justify-center items-center bg-primary/60 backdrop-blur-2xl w-1/4 rounded-l-2xl">
           <button
             data-cuelume-press="tick" data-cuelume-release="release"
             type="button"
@@ -157,7 +157,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
           </button>
         </section>
 
-        <section className="flex items-center bg-secondary w-full px-3 md:rounded-r-2xl">
+        <section className="flex items-center bg-secondary w-full px-3 rounded-r-2xl">
           <button
             type="button"
             aria-label="Previous track"
