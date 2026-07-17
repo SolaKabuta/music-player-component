@@ -11,7 +11,7 @@ Designed as a modern music player interface, this project showcases clean state 
 Here is how the player looks in action (replace these placeholders with your actual screenshots once you have them!):
 
 ### Closed State (Now Playing View)
-![Music Player Closed View](./assets/images/screenshot_desktop_closed.png)
+![Music Player Closed View](./public/asets/images/screenshot_desktop_closed.png)
 *A sleek, minimal glassmorphic bar displaying the current track with live playback state indicator.*
 
 ### Expanded State (Tracks & Artist EP Info)
