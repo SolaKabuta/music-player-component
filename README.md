@@ -1,4 +1,4 @@
-# 🎧 Music Player Component - KAM
+# 🎧 Music Player Component 
 
 An elegant, fully-featured, and highly interactive audio player component built with **React**, **Vite**, **Framer Motion**, and **Tailwind CSS**. 
 

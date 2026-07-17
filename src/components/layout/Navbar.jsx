@@ -62,14 +62,15 @@ export default function Navbar({ currentTrack, onTrackChange }) {
            <motion.div initial={{ opacity: 0, scaleX: 0 }}
              animate={{ opacity: 1, scaleX: 1 }}
              exit={{ opacity: 0, scaleX: 0 }}
-             transition={{ duration: 0.8, ease: "easeInOut", exit: { duration: 0.1 } }} className="bg-white/20 h-0.5 w-full rounded-full my-3"></motion.div> 
+             transition={{ duration: 0.5, ease: "easeInOut", exit: { duration: 0.1 } }} className="bg-white/20 h-0.5 w-full rounded-full my-3">
+           </motion.div> 
           )}
           </AnimatePresence>
 
         <AnimatePresence>
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
-          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ delay: 0.1,duration: 0.5, exit: {duration: 0.1} }} className="flex items-center gap-6" >
+          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ delay: 0.1, duration: 0.5, ease: "easeInOut", exit: {duration: 0.1} }} className="flex items-center gap-6" >
             <div  className="w-[40%] h-60" >
                 {/* ARTIST INFO */}
                 {artistData.map((item, index) => (
