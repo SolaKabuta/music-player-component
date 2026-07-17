@@ -6,7 +6,7 @@ import { MusicPlayer } from "./components/MusicPlayer"
 import { useState } from 'react'
 
 function App() {
-  const [currentTrack, setCurrentTrack] = useState('Vertigo'); // Id initial
+  const [currentTrack, setCurrentTrack] = useState('London Calls (Interlude)'); // Id initial
 
   return (
     <>

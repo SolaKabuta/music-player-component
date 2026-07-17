@@ -155,7 +155,7 @@ export default function Navbar({ currentTrack, onTrackChange }) {
                           exit={{ opacity: 1, x: -10, duration: 0.1, delay: 0 }}
                     transition={{ delay: trackIndex * 0.3, duration: 0.5 }} className="text-xs">
                     {track.id === currentTrack ? (
-                      <button className={`border borderaccent bg-secondary text-primary text-sm rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
+                      <button className={`border border-accent bg-secondary text-primary text-sm rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id}
                       </button>
                     ) : (
                       <button className={`border border-secondary text-sm rounded-full py-1 px-4 transition duration-300 hover:bg-secondary hover:text-black hover:-translate-y-0.5`} data-cuelume-hover="bloom" onClick={() => handleTrackClick(track.id)}>{track.id} <span className="px-2">|</span>{track.duration}
