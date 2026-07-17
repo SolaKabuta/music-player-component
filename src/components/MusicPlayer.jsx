@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 import { useRef, useState, useEffect, useCallback } from 'react';
+import { bind } from "cuelume";
+
+bind();
 
 import {
   TRACK_LIST,
@@ -129,8 +132,9 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
       <main className="flex grid-cols-2 h-15 rounded-2xl">
         <section className="flex justify-center items-center bg-primary w-1/4 rounded-l-2xl">
           <button
+            data-cuelume-press="tick" data-cuelume-release="release"
             type="button"
-            aria-label={isPlaying ? 'Pause' : 'Lecture'}
+            aria-label={isPlaying ? 'Pause' : 'Play'}
             onClick={togglePlayPause}
             disabled={!hasAudio}
             className="disabled:opacity-40"
@@ -156,7 +160,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
         <section className="flex items-center bg-secondary w-full px-3 rounded-r-2xl">
           <button
             type="button"
-            aria-label="Morceau précédent"
+            aria-label="Previous track"
             onClick={() => goToTrack('prev')}
           >
             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +180,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
 
           <button
             type="button"
-            aria-label="Barre de progression"
+            aria-label="Progression bar"
             onClick={handleSeek}
             className="bg-primary/20 w-[70%] h-5 mx-2 rounded-full overflow-hidden"
             disabled={!hasAudio}
@@ -192,7 +196,7 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
 
           <button
             type="button"
-            aria-label="Morceau suivant"
+            aria-label="Next track"
             onClick={() => goToTrack('next')}
           >
             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
