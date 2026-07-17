@@ -27,7 +27,7 @@ export const TRACKS_BY_SLUG = Object.fromEntries(
   ]),
 );
 
-export const AUDIO_API_URL = 'http://localhost:4000';
+export const AUDIO_API_URL = 'music-player-component-three.vercel.app';
 
 export function titleToSlug(titleOrSlug) {
   const track = TRACK_LIST.find(

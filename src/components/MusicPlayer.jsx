@@ -1,5 +1,7 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
+import { useRef, useState, useEffect, useCallback } from 'react';
+
 import {
   TRACK_LIST,
   titleToSlug,
