@@ -22,7 +22,7 @@ export default function Navbar({ currentTrack, onTrackChange }) {
   
  return (
    <>
-     <main className="md:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
+     <main className="lg:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
        <AnimatePresence>
          {/* NOW PLAYING */}
         <section className="flex items-center justify-between">
@@ -129,7 +129,7 @@ export default function Navbar({ currentTrack, onTrackChange }) {
                         )}
                     </div>
                   </div> 
-                  <div>
+                  <div className="pt-1">
                     {/* FOLLOW BUTTON */}
                     <a data-cuelume-toggle='success' href="https://soundcloud.com/kamorange" target="_blank" className="flex items-center gap-2 uppercase text-xs border-[0.5px] border-secondary rounded-full p-1 px-3 transition duration-300 hover:bg-secondary hover:text-primary hover:border-blue-700 active:bg-blue-700 active:text-secondary group">
                       <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

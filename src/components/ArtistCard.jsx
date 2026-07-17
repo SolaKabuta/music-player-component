@@ -33,7 +33,7 @@ export default function ArtistCard() {
                   </div>
                   
                   {/* DIVIDER */}
-                  <div className="bg-primary/20 h-40 w-0.5 rounded-full"></div>
+                  <div className="hidden md:block bg-primary/20 h-40 w-0.5 rounded-full"></div>
                   
                   {/* CREDITS */}
                   <div className="hidden md:block">

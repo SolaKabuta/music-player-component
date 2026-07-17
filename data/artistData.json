@@ -8,9 +8,6 @@
     "avatar" : "../assets/images/avatar.png",
     "cover" : "../assets/images/cover.png",
     "tracks" : [
-      { "id" : "Vertigo", "duration" : "2:44", "genre": "BREAKBEAT / EXPERIMENTAL"},
-      { "id" : "Regrets", "duration" : "2:37", "genre": "UK GARAGE / CLUB"},
-      { "id" : "Twisted Truth", "duration" : "2:24", "genre": "UK GARAGE / CLUB"},
       { "id" : "Bad News (I Kill The President)", "duration" : "1:36", "genre": "BREAKBEAT / EXPERIMENTAL"},
       { "id" : "London Calls (Interlude)", "duration" : "1:39", "genre": "UK GARAGE / 2 STEP"}
     ],
