@@ -22,10 +22,10 @@ export default function Navbar({ currentTrack, onTrackChange }) {
   
  return (
    <>
-     <main className="lg:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm rounded-t-2xl p-6 [&_button]:cursor-pointer">
+     <main className="lg:w-[930.38px] bg-primary/40 backdrop-blur-2xl text-white text-sm md:rounded-t-2xl p-6 [&_button]:cursor-pointer">
        <AnimatePresence>
          {/* NOW PLAYING */}
-        <section className="flex items-center justify-between">
+        <section className="flex items-center gap-8 md:gap-0 md:justify-between">
             <div className="flex items-center gap-2 text-xs">
                 <div className="bg-lime-400 h-1.5 w-1.5 rounded-full animate-ping"></div>
                 <p>Now playing <span className="px-2">:</span></p>
@@ -70,8 +70,8 @@ export default function Navbar({ currentTrack, onTrackChange }) {
         <AnimatePresence>
         {/* PROJECT DATA DROPDOWN MENU */}
         {isOpen && (
-          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ delay: 0.1, duration: 0.5, ease: "easeInOut", exit: {duration: 0.1} }} className="flex items-center gap-6" >
-            <div  className="w-[40%] h-60" >
+          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ delay: 0.1, duration: 0.5, ease: "easeInOut", exit: {duration: 0.1} }} className="md:flex items-center md:gap-6" >
+            <div  className="md:w-[40%] md:h-60 pb-8" >
                 {/* ARTIST INFO */}
                 {artistData.map((item, index) => (
                   <motion.div key={index} className="text-pretty" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: 0.8, duration: 0.6, exit: { duration: 0.1 } }}>
@@ -89,13 +89,13 @@ export default function Navbar({ currentTrack, onTrackChange }) {
             </div> 
           
           {/* DIVIDER */}
-          <motion.div initial={{ opacity: 0, scaleY: 0 }} animate={{ opacity: 1, scaleY: 1 }} exit={{ opacity: 0, scaleY: 0 }} transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}  className="bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
+          <motion.div initial={{ opacity: 0, scaleY: 0 }} animate={{ opacity: 1, scaleY: 1 }} exit={{ opacity: 0, scaleY: 0 }} transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}  className="hidden md:block bg-white/20 h-50 w-0.5 rounded-full"></motion.div>
           
           {/* TRACKS DATA */}
-          <motion.section className=" h-60" key={track.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8, exit: { duration: 0.1 , delay: 0 } }}>
+          <motion.section className="md:h-60 pb-8" key={track.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.8, duration: 0.8, exit: { duration: 0.1 , delay: 0 } }}>
             {artistData.map((item, index) => (
               <div key={index} className="text-pretty">
-                <div className="flex justify-between gap-16">
+                <div className="flex justify-between md:gap-28">
                   <div className="flex items-center gap-6 pb-2">
                     <p className="uppercase font-bold text-lg">{item.project}</p>
                     {/* CTAs */}
@@ -132,7 +132,7 @@ export default function Navbar({ currentTrack, onTrackChange }) {
                   </div> 
                   <div className="pt-1">
                     {/* FOLLOW BUTTON */}
-                    <a data-cuelume-toggle='success' href="https://soundcloud.com/kamorange" target="_blank" className="flex items-center gap-2 uppercase text-xs border-[0.5px] border-secondary rounded-full p-1 px-3 transition duration-300 hover:bg-secondary hover:text-primary hover:border-blue-700 active:bg-blue-700 active:text-secondary group">
+                    <a data-cuelume-toggle='success' href="https://soundcloud.com/kamorange" target="_blank" className="flex items-center gap-2 w-fit mb-4 uppercase text-xs border-[0.5px] border-secondary rounded-full p-1 px-3 transition duration-300 hover:bg-secondary hover:text-primary hover:border-blue-700 active:bg-blue-700 active:text-secondary group">
                       <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path className="transition duration-500  group-hover:stroke-blue-700 group-active:stroke-secondary" d="M12.7288 16.4407H7.95557C6.47526 16.4407 5.7351 16.4407 5.13283 16.6234C3.7768 17.0347 2.71563 18.0959 2.30428 19.4519C2.12158 20.0542 2.12158 20.7944 2.12158 22.2747M20.1539 22.2747V15.9103M16.9717 19.0925H23.3361M15.3806 7.9549C15.3806 10.5911 13.2436 12.7282 10.6074 12.7282C7.97118 12.7282 5.83412 10.5911 5.83412 7.9549C5.83412 5.3187 7.97118 3.18164 10.6074 3.18164C13.2436 3.18164 15.3806 5.3187 15.3806 7.9549Z" stroke="#F5FBEE" stroke-width="2.12145" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
