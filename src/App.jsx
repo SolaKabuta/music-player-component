@@ -13,7 +13,7 @@ function App() {
       <div className="min-h-screen grid place-content-center justify-center px-4">
         <Navbar currentTrack={currentTrack} onTrackChange={setCurrentTrack} />
         <ArtistCard />
-        <MusicPlayer currentTrack={currentTrack} />
+        <MusicPlayer currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} />
       </div>
     </>
   )

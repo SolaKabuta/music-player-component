@@ -26,7 +26,6 @@ export const TRACKS_BY_SLUG = Object.fromEntries(
   ]),
 );
 
-export const AUDIO_API_URL = 'http://localhost:4000';
 
 export function titleToSlug(titleOrSlug) {
   const track = TRACK_LIST.find(
@@ -40,7 +39,8 @@ export function slugToTitle(slug) {
 }
 
 export function getAudioUrl(slug) {
-  return `${AUDIO_API_URL}/api/track/${slug}`;
+  const fileName = TRACKS_BY_SLUG[slug];
+  return fileName ? `/${fileName}` : '';
 }
 
 export function getTrackIndex(titleOrSlug) {
