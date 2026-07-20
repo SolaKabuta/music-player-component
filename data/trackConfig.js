@@ -3,9 +3,6 @@
  */
 
 export const TRACK_LIST = [
-  { slug: 'vertigo', title: 'Vertigo', fileName: null },
-  { slug: 'regrets', title: 'Regrets', fileName: null },
-  { slug: 'twisted_truth', title: 'Twisted Truth', fileName: null },
   {
     slug: 'bad_news',
     title: 'Bad News (I Kill The President)',

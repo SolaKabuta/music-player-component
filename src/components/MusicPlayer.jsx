@@ -84,6 +84,11 @@ export function MusicPlayer({ currentTrack, setCurrentTrack }) {
     audio.currentTime = ratio * duration;
   };
 
+  // UPDATE PAGE TITLE
+  useEffect(() => {
+    document.title = `KAM - ${currentTrack}`;
+  }, [currentTrack]);
+
   // ON TRACK CHANGE : RELOAD AUDIO AND PLAY
   useEffect(() => {
     const audio = audioRef.current;
